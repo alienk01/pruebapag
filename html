@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPM - Bombas & Servicios | Neuquén</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.8rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #dc2626;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #dc2626;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.08), transparent);
+            border-radius: 50%;
+            top: -300px;
+            right: -200px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            color: #dc2626;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            max-width: 900px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 2rem;
+            transition: gap 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-link:hover {
+            gap: 15px;
+        }
+
+        .cta-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Value Section */
+        .value-section {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .value-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            max-width: 700px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .value-item {
+            padding: 2rem 0;
+            border-top: 2px solid #dc2626;
+        }
+
+        .value-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .value-item p {
+            color: #666;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: #f8f8f8;
+            padding: 8rem 3rem;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: #dc2626;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #1a1a1a;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid #e5e5e5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #dc2626;
+            transition: width 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            width: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: rgba(220, 38, 38, 0.2);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem 0;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #dc2626;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #999;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .contact-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .contact-content p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item-label {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-item-value {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+        }
+
+        .contact-item-value a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-value a:hover {
+            color: #dc2626;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-about h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: #dc2626;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 38px;
+            height: 38px;
+            fill: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .contact-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .value-section,
+            .services-section,
+            .contact-section {
+                padding: 5rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2,
+            .contact-content h2,
+            .value-section h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content,
+            .value-section,
+            .services-section,
+            .contact-section,
+            .stats-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo">WPM</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-subtitle">BOMBAS & SERVICIOS</div>
+            <h1>El valor de la experiencia</h1>
+            <p class="hero-description">Desarrollamos soluciones de bombeo caracterizadas por la conjunción de innovación, calidad y servicios.</p>
+            <p class="hero-description">Orientados a complacer las necesidades actuales y potenciales de nuestros clientes, garantizando eficiencia y resultados óptimos.</p>
+            <a href="#nosotros" class="cta-link">
+                Conocer más
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="value-section" id="nosotros">
+        <h2>Somos especialistas en sistemas de bombeo para agua, minería y petróleo</h2>
+        <div class="value-grid">
+            <div class="value-item">
+                <h3>Experiencia</h3>
+                <p>Con más de 25 años de vasta experiencia en el rubro, nos destacamos por nuestra amplia gama de productos y un servicio de postventa superior.</p>
+            </div>
+            <div class="value-item">
+                <h3>Compromiso</h3>
+                <p>Nuestra labor está signada por la responsabilidad, el compromiso y la prudencia, procurando lograr la mayor eficiencia para nuestros clientes.</p>
+            </div>
+            <div class="value-item">
+                <h3>Personalización</h3>
+                <p>Nos distinguimos por ofrecer un servicio personalizado, garantizando la solución más eficiente al menor costo posible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="servicios">
+        <div class="services-container">
+            <div class="section-header">
+                <div class="section-subtitle">SERVICIOS ESPECIALIZADOS</div>
+                <h2>Soluciones integrales de bombeo</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3>Asesoramiento Personalizado</h3>
+                    <p>Guía experta para la selección precisa de equipos y accesorios. Analizamos cada proyecto para ofrecer la mejor solución técnica y económica.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <h3>Reparación y Mantenimiento</h3>
+                    <p>Servicio técnico calificado para asegurar la operatividad continua de sus sistemas. Mantenimiento preventivo y correctivo de alta calidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3>Asistencia Postventa</h3>
+                    <p>Soporte continuo y dedicado para cualquier necesidad después de la adquisición. Acompañamos a nuestros clientes en cada etapa del proceso.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">04</div>
+                    <h3>Alineación Láser</h3>
+                    <p>Diagnóstico de precisión con tecnología de última generación. Entrega de informes detallados para optimizar el rendimiento de sus equipos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">+25</div>
+                <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Industrias principales</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Compromiso</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Soporte disponible</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+        <div class="contact-grid">
+            <div class="contact-content">
+                <h2>Optimice sus sistemas de bombeo</h2>
+                <p>Solicite una asesoría personalizada y descubra cómo podemos mejorar la eficiencia de su operación. En WPM, su éxito es nuestra prioridad.</p>
+                <a href="https://api.whatsapp.com/send?text=Hola%20quisiera%20consultar%20sobre%20&phone=5492994676871" class="cta-link">
+                    Solicitar asesoría
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-label">Ubicación</div>
+                    <div class="contact-item-value">
+                        Tita Merello 3200<br>
+                        Neuquén Capital, Neuquén
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Teléfonos</div>
+                    <div class="contact-item-value">
+                        <a href="tel:02994403508">(0299) 440-3508</a><br>
+                        <a href="tel:5492994676871">(0299) 15 467-6871</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Email</div>
+                    <div class="contact-item-value">
+                        <a href="mailto:ventas@wpmweb.com.ar">ventas@wpmweb.com.ar</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Horario</div>
+                    <div class="contact-item-value">
+                        Lunes a Viernes<br>
+                        08:30 a 17:30 hs
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>WPM</h3>
+                <p>Especialistas en soluciones de bombeo para las industrias del agua, minería y petróleo. Más de 25 años de experiencia respaldan nuestro compromiso con la excelencia.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Asesoramiento</a></li>
+                    <li><a href="#servicios">Mantenimiento</a></li>
+                    <li><a href="#servicios">Postventa</a></li>
+                    <li><a href="#servicios">Alineación Láser</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WPM SRL - Bombas & Servicios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?text=Hola%20quisiera%20consultar%20sobre%20&phone=5492994676871" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.252 1.408 1.413-5.234-0.321-0.526c-1.344-2.2-2.053-4.746-2.053-7.387 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62c0 7.51-6.11 13.62-13.62 13.62zM21.524 19.064c-0.331-0.165-1.964-0.969-2.268-1.080-0.304-0.111-0.525-0.165-0.746 0.165s-0.858 1.080-1.052 1.301c-0.194 0.221-0.388 0.249-0.719 0.083-0.331-0.165-1.397-0.515-2.661-1.643-0.984-0.877-1.648-1.961-1.841-2.292s-0.021-0.508 0.145-0.672c0.148-0.148 0.331-0.388 0.497-0.581 0.165-0.194 0.221-0.331 0.331-0.553 0.111-0.221 0.055-0.415-0.028-0.581s-0.746-1.797-1.022-2.458c-0.269-0.643-0.542-0.556-0.746-0.566-0.194-0.010-0.415-0.012-0.636-0.012s-0.581 0.083-0.885 0.415c-0.304 0.331-1.163 1.135-1.163 2.767s1.191 3.211 1.357 3.432c0.165 0.221 2.343 3.573 5.674 5.010 0.793 0.343 1.413 0.548 1.896 0.701 0.797 0.254 1.522 0.218 2.096 0.132 0.64-0.096 1.964-0.803 2.24-1.577 0.276-0.775 0.276-1.437 0.194-1.577s-0.304-0.221-0.636-0.388z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
