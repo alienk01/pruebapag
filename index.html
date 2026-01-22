@@ -46,8 +46,6 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
             font-weight: 700;
             color: #003366;
             letter-spacing: 1px;
@@ -55,15 +53,18 @@
         }
 
         .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #003366;
+         display: none;
         }
 
+         .logo img {
+          max-height: 60px; /* Ajusta este valor según qué tan grande quieras el logo */
+          transition: transform 0.3s ease;
+        }
+
+         .logo img:hover {
+          transform: scale(1.05); /* Efecto sutil al pasar el mouse */
+         }
+        
         .nav-links {
             display: flex;
             gap: 3rem;
