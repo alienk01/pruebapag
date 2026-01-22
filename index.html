@@ -227,91 +227,94 @@
         }
 
         /* Services Section */
-        .services-section {
-            background: #f8f8f8;
-            padding: 8rem 3rem;
-        }
+        /* Contenedor de la Sección */
+.services-section {
+    background: #001529; /* Azul muy oscuro para que resalten las tarjetas */
+    padding: 100px 3rem;
+}
 
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.section-header h2 {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-top: 10px;
+}
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
+/* Grilla y Tarjetas */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 50px;
+}
 
-        .section-subtitle {
-            font-size: 0.9rem;
-            color: #003366;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+.service-card {
+    background: rgba(255, 255, 255, 0.05); /* Efecto Glassmorphism */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: #1a1a1a;
-        }
+.service-card:hover {
+    transform: translateY(-15px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #004e92;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
+/* Manejo de Imágenes dentro de las tarjetas */
+.service-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
 
-        .service-card {
-            background: white;
-            padding: 3rem 2rem;
-            transition: all 0.4s ease;
-            border: 1px solid #e5e5e5;
-            position: relative;
-            overflow: hidden;
-        }
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #003366;
-            transition: width 0.4s ease;
-        }
+.service-card:hover .service-img {
+    transform: scale(1.1);
+}
 
-        .service-card:hover::before {
-            width: 100%;
-        }
+/* Iconos y Contenido */
+.service-content {
+    padding: 2rem;
+    text-align: left;
+}
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
+.service-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #004e92, #00c6ff);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+}
 
-        .service-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: rgba(0, 51, 102, 0.15);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
+.service-icon svg {
+    width: 28px;
+    height: 28px;
+}
 
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-            font-weight: 600;
-        }
+.service-card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
 
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-            font-weight: 300;
-        }
+.service-card p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 
         /* Stats Section */
         .stats-section {
@@ -616,35 +619,54 @@
     </section>
 
     <section class="services-section" id="servicios">
-        <div class="services-container">
-            <div class="section-header">
-                <div class="section-subtitle">SERVICIOS ESPECIALIZADOS</div>
-                <h2>Soluciones integrales de bombeo</h2>
+    <div class="services-container">
+        <div class="section-header">
+            <div class="section-subtitle">Soluciones de Vanguardia</div>
+            <h2>Servicios Especializados</h2>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="bomba-industrial.jpg" alt="Sistemas de Bombeo" class="service-img">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M5.07 5.07l13.86 13.86M18.93 5.07L5.07 18.93"/></svg>
+                    </div>
+                    <h3>Sistemas de Bombeo</h3>
+                    <p>Instalación y mantenimiento de alta eficiencia para la industria del petróleo y minería.</p>
+                </div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-number">01</div>
-                    <h3>Asesoramiento Personalizado</h3>
-                    <p>Guía experta para la selección precisa de equipos y accesorios. Analizamos cada proyecto para ofrecer la mejor solución técnica y económica.</p>
+
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="tecnico-ia.jpg" alt="Automatización con IA" class="service-img">
                 </div>
-                <div class="service-card">
-                    <div class="service-number">02</div>
-                    <h3>Reparación y Mantenimiento</h3>
-                    <p>Servicio técnico calificado para asegurar la operatividad continua de sus sistemas. Mantenimiento preventivo y correctivo de alta calidad.</p>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v4M12 16h.01"/></svg>
+                    </div>
+                    <h3>Automatización con IA</h3>
+                    <p>Optimizamos procesos industriales mediante algoritmos avanzados y control inteligente.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-number">03</div>
-                    <h3>Asistencia Postventa</h3>
-                    <p>Soporte continuo y dedicado para cualquier necesidad después de la adquisición. Acompañamos a nuestros clientes en cada etapa del proceso.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image-container">
+                    <img src="fondo.jpg" alt="Alineación Láser" class="service-img">
                 </div>
-                <div class="service-card">
-                    <div class="service-number">04</div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
                     <h3>Alineación Láser</h3>
-                    <p>Diagnóstico de precisión con tecnología de última generación. Entrega de informes detallados para optimizar el rendimiento de sus equipos.</p>
+                    <p>Diagnóstico de precisión milimétrica para prolongar la vida útil de sus equipos rotativos.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="stats-section">
         <div class="stats-container">
