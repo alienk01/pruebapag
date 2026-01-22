@@ -3,579 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WPM - Bombas & Servicios | Neuquén</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>WPM | Ingeniería en Sistemas de Bombeo e IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
     <style>
+        :root {
+            --primary: #004e92;
+            --secondary: #e63946;
+            --dark-bg: #000f1f;
+            --light-bg: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.7;
+            background-color: var(--light-bg);
+            color: var(--text-main);
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         header.scrolled {
-            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         nav {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 1.8rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
-        .logo {
-            font-weight: 700;
-            color: #003366;
-            letter-spacing: 1px;
-            position: relative;
+        .logo img {
+            height: 45px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
-        .logo::after {
-         display: none;
-        }
-
-         .logo img {
-          max-height: 60px; /* Ajusta este valor según qué tan grande quieras el logo */
-          transition: transform 0.3s ease;
-        }
-
-         .logo img:hover {
-          transform: scale(1.05); /* Efecto sutil al pasar el mouse */
-         }
-        
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: #1a1a1a;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-            position: relative;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            opacity: 0.8;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #003366;
-            transition: width 0.3s ease;
-        }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
 
-        .nav-links a:hover {
-            color: #003366;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* --- HERO SECTION --- */
         .hero {
-            margin-top: 100px;
-            min-height: 85vh;
+            height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            background: linear-gradient(rgba(0, 15, 31, 0.7), rgba(0, 15, 31, 0.85)), 
+                        url('atardecer-industrial.jpg') center/cover no-repeat fixed;
+            color: white;
+            padding: 0 2rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.08), transparent);
-            border-radius: 50%;
-            top: -300px;
-            right: -200px;
         }
 
         .hero-content {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 3rem;
-            position: relative;
-            z-index: 1;
+            width: 100%;
         }
 
-        .hero-subtitle {
-            font-size: 0.9rem;
-            color: #003366;
-            letter-spacing: 3px;
+        .hero-tag {
+            background: var(--secondary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
-            font-weight: 600;
+            letter-spacing: 2px;
+            display: inline-block;
             margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
             font-weight: 700;
-            line-height: 1.2;
             margin-bottom: 2rem;
-            color: #1a1a1a;
             max-width: 900px;
         }
 
-        .hero-description {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .cta-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color:#003366;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-top: 2rem;
-            transition: gap 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .cta-link:hover {
-            gap: 15px;
-        }
-
-        .cta-link svg {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-link:hover svg {
-            transform: translateX(5px);
-        }
-
-        /* Value Section */
-        .value-section {
-            padding: 8rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .value-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
             margin-bottom: 3rem;
-            color: #1a1a1a;
-            max-width: 700px;
         }
 
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .value-item {
-            padding: 2rem 0;
-            border-top: 2px solid #003366;
-        }
-
-        .value-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-            font-weight: 600;
-        }
-
-        .value-item p {
-            color: #666;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* Services Section */
-        /* Contenedor de la Sección */
-.services-section {
-    background: #001529; /* Azul muy oscuro para que resalten las tarjetas */
-    padding: 100px 3rem;
-}
-
-.section-header h2 {
-    color: #ffffff;
-    font-size: 3rem;
-    margin-top: 10px;
-}
-
-/* Grilla y Tarjetas */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 50px;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.05); /* Efecto Glassmorphism */
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.service-card:hover {
-    transform: translateY(-15px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: #004e92;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-/* Manejo de Imágenes dentro de las tarjetas */
-.service-image-container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-}
-
-.service-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.service-card:hover .service-img {
-    transform: scale(1.1);
-}
-
-/* Iconos y Contenido */
-.service-content {
-    padding: 2rem;
-    text-align: left;
-}
-
-.service-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #004e92, #00c6ff);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: white;
-}
-
-.service-icon svg {
-    width: 28px;
-    height: 28px;
-}
-
-.service-card h3 {
-    color: #fff;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.service-card p {
-    color: #b0b0b0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-        /* Stats Section */
-        .stats-section {
-            background: #003366; /* Fondo azul oscuro */
+        .btn-primary {
+            background: var(--primary);
             color: white;
-            padding: 6rem 3rem;
-        }
-
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 4rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 2rem 0;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            color: #dc2626;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 78, 146, 0.3);
         }
 
-        .stat-label {
-            font-size: 1rem;
-            color: #999;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 300;
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 78, 146, 0.4);
         }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 8rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* --- SERVICES (GLASSMORPHISM) --- */
+        .services {
+            background: var(--dark-bg);
+            padding: 120px 2rem;
+            position: relative;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
         }
 
-        .contact-content h2 {
-            font-family: 'Playfair Display', serif;
+        .section-title h2 {
+            color: white;
             font-size: 3rem;
-            margin-bottom: 2rem;
-            color: #1a1a1a;
+            font-family: 'Outfit';
         }
 
-        .contact-content p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
+        .services-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
-        .contact-item {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #e5e5e5;
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            transition: 0.4s;
         }
 
-        .contact-item:last-child {
-            border-bottom: none;
+        .card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--primary);
+            transform: translateY(-10px);
         }
 
-        .contact-item-label {
-            font-size: 0.85rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
         }
 
-        .contact-item-value {
-            font-size: 1.1rem;
-            color: #1a1a1a;
+        .card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .contact-item-value a {
-            color: #1a1a1a;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .card p {
+            color: #94a3b8;
+            line-height: 1.7;
         }
 
-        .contact-item-value a:hover {
-            color: #dc2626;
+        /* --- STATS --- */
+        .stats {
+            padding: 100px 2rem;
+            background: white;
         }
 
-        /* Footer */
+        .stats-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            font-family: 'Outfit';
+        }
+
+        /* --- FOOTER --- */
         footer {
-           background: #002244; /* Un azul todavía más oscuro para el footer */
-           color: #ccc;
-            padding: 4rem 3rem 2rem;
+            background: #020617;
+            padding: 80px 2rem 40px;
+            color: white;
         }
 
-        .footer-content {
-            max-width: 1400px;
+        .footer-grid {
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 4rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid #333;
         }
 
-        .footer-about h3 {
-            font-family: 'Playfair Display', serif;
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-about p {
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .footer-links h4 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: #999;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.8rem;
-            transition: color 0.3s ease;
-            font-weight: 300;
-        }
-
-        .footer-links a:hover {
-            color: #dc2626;
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 300;
-        }
-
-        /* WhatsApp Float */
-        .whatsapp-float {
+        .whatsapp-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 65px;
-            height: 65px;
+            bottom: 40px;
+            right: 40px;
             background: #25d366;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 999;
-            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: 0.3s;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
-        }
-
-        .whatsapp-float svg {
-            width: 38px;
-            height: 38px;
-            fill: white;
-        }
+        .whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .contact-grid,
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            .value-section,
-            .services-section,
-            .contact-section {
-                padding: 5rem 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                margin-top: 80px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-header h2,
-            .contact-content h2,
-            .value-section h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content,
-            .value-section,
-            .services-section,
-            .contact-section,
-            .stats-section {
-                padding: 3rem 1.5rem;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
+        @media (max-width: 992px) {
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
+
     <header id="header">
         <nav>
-            <div class="logo">
-    <a href="#inicio">
-        <img src="logo.png" alt="WPM Logo" style="height: 50px; width: auto; display: block;">
-    </a>
-</div>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="WPM">
+            </a>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -587,198 +285,99 @@
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <div class="hero-subtitle">BOMBAS & SERVICIOS</div>
-            <h1>El valor de la experiencia</h1>
-            <p class="hero-description">Desarrollamos soluciones de bombeo caracterizadas por la conjunción de innovación, calidad y servicios.</p>
-            <p class="hero-description">Orientados a complacer las necesidades actuales y potenciales de nuestros clientes, garantizando eficiencia y resultados óptimos.</p>
-            <a href="#nosotros" class="cta-link">
-                Conocer más
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-    </section>
-
-    <section class="value-section" id="nosotros">
-        <h2>Somos especialistas en sistemas de bombeo para agua, minería y petróleo</h2>
-        <div class="value-grid">
-            <div class="value-item">
-                <h3>Experiencia</h3>
-                <p>Con más de 25 años de vasta experiencia en el rubro, nos destacamos por nuestra amplia gama de productos y un servicio de postventa superior.</p>
-            </div>
-            <div class="value-item">
-                <h3>Compromiso</h3>
-                <p>Nuestra labor está signada por la responsabilidad, el compromiso y la prudencia, procurando lograr la mayor eficiencia para nuestros clientes.</p>
-            </div>
-            <div class="value-item">
-                <h3>Personalización</h3>
-                <p>Nos distinguimos por ofrecer un servicio personalizado, garantizando la solución más eficiente al menor costo posible.</p>
+            <span class="hero-tag">Tecnología de Precisión</span>
+            <h1>Ingeniería Hidráulica <br> Potenciada por IA.</h1>
+            <p>Más de 25 años optimizando sistemas de bombeo para la industria energética, minera y petrolera en el corazón de Vaca Muerta.</p>
+            <div class="hero-btns">
+                <a href="#contacto" class="btn-primary">Solicitar Asesoría</a>
             </div>
         </div>
     </section>
 
-    <section class="services-section" id="servicios">
-    <div class="services-container">
-        <div class="section-header">
-            <div class="section-subtitle">Soluciones de Vanguardia</div>
-            <h2>Servicios Especializados</h2>
-        </div>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-image-container">
-                    <img src="bomba-industrial.jpg" alt="Sistemas de Bombeo" class="service-img">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M5.07 5.07l13.86 13.86M18.93 5.07L5.07 18.93"/></svg>
-                    </div>
-                    <h3>Sistemas de Bombeo</h3>
-                    <p>Instalación y mantenimiento de alta eficiencia para la industria del petróleo y minería.</p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image-container">
-                    <img src="tecnico-ia.jpg" alt="Automatización con IA" class="service-img">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v4M12 16h.01"/></svg>
-                    </div>
-                    <h3>Automatización con IA</h3>
-                    <p>Optimizamos procesos industriales mediante algoritmos avanzados y control inteligente.</p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image-container">
-                    <img src="fondo.jpg" alt="Alineación Láser" class="service-img">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    </div>
-                    <h3>Alineación Láser</h3>
-                    <p>Diagnóstico de precisión milimétrica para prolongar la vida útil de sus equipos rotativos.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section class="stats-section">
+    <section class="stats">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="stat-number">+25</div>
-                <div class="stat-label">Años de experiencia</div>
+                <h4>+25</h4>
+                <p>Años de Trayectoria</p>
             </div>
             <div class="stat-item">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Industrias principales</div>
+                <h4>500+</h4>
+                <p>Equipos Instalados</p>
             </div>
             <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Compromiso</div>
+                <h4>24/7</h4>
+                <p>Soporte Técnico</p>
             </div>
             <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Soporte disponible</div>
+                <h4>99%</h4>
+                <p>Eficiencia Operativa</p>
             </div>
         </div>
     </section>
 
-    <section class="contact-section" id="contacto">
-        <div class="contact-grid">
-            <div class="contact-content">
-                <h2>Optimice sus sistemas de bombeo</h2>
-                <p>Solicite una asesoría personalizada y descubra cómo podemos mejorar la eficiencia de su operación. En WPM, su éxito es nuestra prioridad.</p>
-                <a href="https://api.whatsapp.com/send?text=Hola%20quisiera%20consultar%20sobre%20&phone=5492994676871" class="cta-link">
-                    Solicitar asesoría
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
+    <section class="services" id="servicios">
+        <div class="section-title">
+            <h2>Nuestra Especialidad</h2>
+        </div>
+        <div class="services-grid">
+            <div class="card">
+                <img src="bomba-industrial.jpg" alt="Bombeo">
+                <h3>Sistemas de Bombeo</h3>
+                <p>Diseño y montaje de estaciones de bombeo de alta capacidad con monitoreo en tiempo real.</p>
             </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-item-label">Ubicación</div>
-                    <div class="contact-item-value">
-                        Tita Merello 3200<br>
-                        Neuquén Capital, Neuquén
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-label">Teléfonos</div>
-                    <div class="contact-item-value">
-                        <a href="tel:02994403508">(0299) 440-3508</a><br>
-                        <a href="tel:5492994676871">(0299) 15 467-6871</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-label">Email</div>
-                    <div class="contact-item-value">
-                        <a href="mailto:ventas@wpmweb.com.ar">ventas@wpmweb.com.ar</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-label">Horario</div>
-                    <div class="contact-item-value">
-                        Lunes a Viernes<br>
-                        08:30 a 17:30 hs
-                    </div>
-                </div>
+            <div class="card">
+                <img src="tecnico-ia.jpg" alt="IA Industrial">
+                <h3>Automatización & IA</h3>
+                <p>Implementación de algoritmos predictivos para reducir el desgaste y prevenir fallas costosas.</p>
             </div>
+            <div class="card">
+                <img src="alineacion-laser.jpg" alt="Láser">
+                <h3>Alineación Láser</h3>
+                <p>Mantenimiento preventivo de precisión milimétrica para prolongar la vida útil de su maquinaria.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" style="padding: 100px 2rem; background: white; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;">¿Listo para optimizar su planta?</h2>
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem;">Hablemos sobre cómo nuestras soluciones pueden reducir sus costos operativos en Neuquén y toda la región.</p>
+            <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary" style="background: var(--dark-bg);">Enviar un Email</a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-about">
-                <h3>WPM</h3>
-                <p>Especialistas en soluciones de bombeo para las industrias del agua, minería y petróleo. Más de 25 años de experiencia respaldan nuestro compromiso con la excelencia.</p>
+        <div class="footer-grid">
+            <div>
+                <img src="logo.png" alt="WPM" style="height: 40px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+                <p style="opacity: 0.6; line-height: 1.8;">Especialistas en soluciones de ingeniería hidráulica para sectores críticos. Innovación argentina desde Neuquén para el mundo.</p>
             </div>
-            <div class="footer-links">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
+            <div>
+                <h4>Contacto</h4>
+                <p style="opacity: 0.6; margin-top: 1rem;">Tita Merello 3200, Neuquén<br>(0299) 440-3508</p>
             </div>
-            <div class="footer-links">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#servicios">Asesoramiento</a></li>
-                    <li><a href="#servicios">Mantenimiento</a></li>
-                    <li><a href="#servicios">Postventa</a></li>
-                    <li><a href="#servicios">Alineación Láser</a></li>
-                </ul>
+            <div>
+                <h4>Legal</h4>
+                <p style="opacity: 0.6; margin-top: 1rem;">&copy; 2026 WPM SRL. <br>Todos los derechos reservados.</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 WPM SRL - Bombas & Servicios. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <a href="https://api.whatsapp.com/send?text=Hola%20quisiera%20consultar%20sobre%20&phone=5492994676871" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 32 32">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.252 1.408 1.413-5.234-0.321-0.526c-1.344-2.2-2.053-4.746-2.053-7.387 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62c0 7.51-6.11 13.62-13.62 13.62zM21.524 19.064c-0.331-0.165-1.964-0.969-2.268-1.080-0.304-0.111-0.525-0.165-0.746 0.165s-0.858 1.080-1.052 1.301c-0.194 0.221-0.388 0.249-0.719 0.083-0.331-0.165-1.397-0.515-2.661-1.643-0.984-0.877-1.648-1.961-1.841-2.292s-0.021-0.508 0.145-0.672c0.148-0.148 0.331-0.388 0.497-0.581 0.165-0.194 0.221-0.331 0.331-0.553 0.111-0.221 0.055-0.415-0.028-0.581s-0.746-1.797-1.022-2.458c-0.269-0.643-0.542-0.556-0.746-0.566-0.194-0.010-0.415-0.012-0.636-0.012s-0.581 0.083-0.885 0.415c-0.304 0.331-1.163 1.135-1.163 2.767s1.191 3.211 1.357 3.432c0.165 0.221 2.343 3.573 5.674 5.010 0.793 0.343 1.413 0.548 1.896 0.701 0.797 0.254 1.522 0.218 2.096 0.132 0.64-0.096 1.964-0.803 2.24-1.577 0.276-0.775 0.276-1.437 0.194-1.577s-0.304-0.221-0.636-0.388z"/>
-        </svg>
+    <a href="https://wa.me/5492994676871" class="whatsapp-btn">
+        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-4.741 1.242 1.26-4.623-.235-.374a9.845 9.845 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
     <script>
-        // Header scroll effect
+        // Efecto scroll en el header
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // Animaciones de entrada
+        ScrollReveal().reveal('.hero-content', { delay: 300, distance: '50px', origin: 'left' });
+        ScrollReveal().reveal('.card', { delay: 300, distance: '50px', interval: 150, origin: 'bottom' });
+        ScrollReveal().reveal('.stat-item', { delay: 200, scale: 0.85, interval: 100 });
     </script>
 </body>
 </html>
