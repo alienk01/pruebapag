@@ -33,20 +33,21 @@
             line-height: 1.6;
         }
 
-        /* --- NAVEGACIÓN --- */
+        /* --- NUEVO HEADER (Estético y Posicionado) --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 0;
+            padding: 1rem 0;
             z-index: 1000;
-            transition: 0.3s ease-in-out;
+            transition: 0.4s ease-in-out;
+            background: rgba(0,0,0,0.3); /* Transparente al inicio */
         }
 
         header.scrolled {
             background: rgba(11, 11, 11, 0.95);
             backdrop-filter: blur(10px);
-            padding: 0.8rem 0;
+            padding: 0.7rem 0;
             border-bottom: 1px solid var(--border-red);
         }
 
@@ -59,44 +60,109 @@
             padding: 0 2rem;
         }
 
+        /* Posicionamiento perfecto del logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
         .logo img {
-            height: 50px;
-            transition: transform 0.3s ease;
+            height: 40px; /* Tamaño estético del logo */
+            width: auto;
+            transition: 0.3s;
+        }
+
+        header.scrolled .logo img {
+            height: 35px; /* Se achica un poco al hacer scroll */
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--pure-white);
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             transition: 0.3s;
+            position: relative;
+        }
+
+        /* Sin subrayado estático, solo hover moderno */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: width 0.3s;
         }
 
         .nav-links a:hover { color: var(--primary-red); }
+        .nav-links a:hover::after { width: 100%; }
 
-        /* --- HERO --- */
+        /* --- HERO SECTION CON SLIDESHOW (Imágenes Pasantes) --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            /* Corregido a atardecer-industrial.jpg */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
-                        url('atardecer-industrial.jpg') center/cover no-repeat fixed;
+            position: relative;
+            overflow: hidden;
             padding: 0 2rem;
+        }
+
+        /* Contenedor del Slideshow */
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Imágenes del Slideshow */
+        .hero-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Transición suave de fade */
+        }
+
+        /* Imagen activa */
+        .hero-slideshow img.active {
+            opacity: 1;
+        }
+
+        /* Overlay oscuro para legibilidad */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+            z-index: 2;
         }
 
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+            position: relative;
+            z-index: 3; /* Sobre el Slideshow y Overlay */
         }
 
         .hero-tag {
@@ -159,7 +225,7 @@
             font-weight: 800;
         }
 
-        /* --- SERVICIOS --- */
+        /* --- SERVICIOS (Ajustados con tus imágenes) --- */
         .services {
             padding: 100px 2rem;
             background: var(--deep-black);
@@ -269,6 +335,12 @@
     </header>
 
     <section class="hero" id="inicio">
+        <div class="hero-slideshow">
+            <img src="fondo.jpg" class="active" alt="Fondo WPM 1">
+            <img src="atardecer-industrial.jpg" alt="Fondo WPM 2">
+        </div>
+        <div class="hero-overlay"></div>
+        
         <div class="hero-content">
             <div class="hero-tag">WPM SRL | Neuquén</div>
             <h1>Potencia y Precisión <br>en cada Bombeo.</h1>
@@ -327,7 +399,7 @@
 
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.3524959146525!2d-68.10688!3d-38.93988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33c0e5a86d2f%3A0x6a0c0e0e0e0e0e0e!2sTita%20Merello%203200%2C%20Neuqu%C3%A9n!5e0!3m2!1ses!2sar!4v1700000000000" 
+                src="http://googleusercontent.com/maps.google.com/6" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
@@ -340,7 +412,7 @@
             </div>
             <div class="footer-item">
                 <h4>Ubicación</h4>
-                <a href="https://www.google.com/maps/search/Tita+Merello+3200,+Neuquén" target="_blank">
+                <a href="http://googleusercontent.com/maps.google.com/7" target="_blank">
                     <p>Tita Merello 3200, Neuquén<br>Argentina</p>
                     <small style="color: var(--primary-red);">(Ver en Google Maps)</small>
                 </a>
@@ -366,10 +438,26 @@
     </a>
 
     <script>
+        // Efecto scroll en header
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // --- SCRIPT DEL SLIDESHOW HERO ---
+        const slides = document.querySelectorAll('.hero-slideshow img');
+        const slideInterval = 5000; // 5 segundos por imagen
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, slideInterval);
+        // ---------------------------------
+
         ScrollReveal().reveal('.hero-content', { delay: 200, distance: '50px', origin: 'bottom' });
         ScrollReveal().reveal('.stat-item', { delay: 300, interval: 100, origin: 'bottom' });
         ScrollReveal().reveal('.card', { delay: 200, interval: 200, origin: 'bottom' });
