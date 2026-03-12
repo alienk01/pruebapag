@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPM | Ingeniería en Sistemas de Bombeo e IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <style>
+        :root {
+            --primary: #004e92;
+            --secondary: #e63946;
+            --dark-bg: #000f1f;
+            --light-bg: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo img {
+            height: 45px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 15, 31, 0.7), rgba(0, 15, 31, 0.85)), 
+                        url('atardecer-industrial.jpg') center/cover no-repeat fixed;
+            color: white;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-tag {
+            background: var(--secondary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 78, 146, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 78, 146, 0.4);
+        }
+
+        /* --- SERVICES (GLASSMORPHISM) --- */
+        .services {
+            background: var(--dark-bg);
+            padding: 120px 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            color: white;
+            font-size: 3rem;
+            font-family: 'Outfit';
+        }
+
+        .services-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        /* --- STATS --- */
+        .stats {
+            padding: 100px 2rem;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            font-family: 'Outfit';
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #020617;
+            padding: 80px 2rem 40px;
+            color: white;
+        }
+
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="WPM">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="hero-tag">Tecnología de Precisión</span>
+            <h1>Ingeniería Hidráulica <br> Potenciada por IA.</h1>
+            <p>Más de 25 años optimizando sistemas de bombeo para la industria energética, minera y petrolera en el corazón de Vaca Muerta.</p>
+            <div class="hero-btns">
+                <a href="#contacto" class="btn-primary">Solicitar Asesoría</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h4>+25</h4>
+                <p>Años de Trayectoria</p>
+            </div>
+            <div class="stat-item">
+                <h4>500+</h4>
+                <p>Equipos Instalados</p>
+            </div>
+            <div class="stat-item">
+                <h4>24/7</h4>
+                <p>Soporte Técnico</p>
+            </div>
+            <div class="stat-item">
+                <h4>99%</h4>
+                <p>Eficiencia Operativa</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="section-title">
+            <h2>Nuestra Especialidad</h2>
+        </div>
+        <div class="services-grid">
+            <div class="card">
+                <img src="bomba-industrial.jpg" alt="Bombeo">
+                <h3>Sistemas de Bombeo</h3>
+                <p>Diseño y montaje de estaciones de bombeo de alta capacidad con monitoreo en tiempo real.</p>
+            </div>
+            <div class="card">
+                <img src="tecnico-ia.jpg" alt="IA Industrial">
+                <h3>Automatización & IA</h3>
+                <p>Implementación de algoritmos predictivos para reducir el desgaste y prevenir fallas costosas.</p>
+            </div>
+            <div class="card">
+                <img src="alineacion-laser.jpg" alt="Láser">
+                <h3>Alineación Láser</h3>
+                <p>Mantenimiento preventivo de precisión milimétrica para prolongar la vida útil de su maquinaria.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" style="padding: 100px 2rem; background: white; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;">¿Listo para optimizar su planta?</h2>
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem;">Hablemos sobre cómo nuestras soluciones pueden reducir sus costos operativos en Neuquén y toda la región.</p>
+            <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary" style="background: var(--dark-bg);">Enviar un Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <img src="logo.png" alt="WPM" style="height: 40px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+                <p style="opacity: 0.6; line-height: 1.8;">Especialistas en soluciones de ingeniería hidráulica para sectores críticos. Innovación argentina desde Neuquén para el mundo.</p>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <p style="opacity: 0.6; margin-top: 1rem;">Tita Merello 3200, Neuquén<br>(0299) 440-3508</p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <p style="opacity: 0.6; margin-top: 1rem;">&copy; 2026 WPM SRL. <br>Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5492994676871" class="whatsapp-btn">
+        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-4.741 1.242 1.26-4.623-.235-.374a9.845 9.845 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        // Efecto scroll en el header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Animaciones de entrada
+        ScrollReveal().reveal('.hero-content', { delay: 300, distance: '50px', origin: 'left' });
+        ScrollReveal().reveal('.card', { delay: 300, distance: '50px', interval: 150, origin: 'bottom' });
+        ScrollReveal().reveal('.stat-item', { delay: 200, scale: 0.85, interval: 100 });
+    </script>
+</body>
+</html>
