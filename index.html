@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WPM | Ingeniería en Sistemas de Bombeo e IA</title>
+    <title>WPM | Bombas & Servicios</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
     
@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 0;
@@ -82,7 +81,6 @@
 
         .nav-links a:hover { opacity: 1; color: var(--primary); }
 
-        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -145,7 +143,6 @@
             box-shadow: 0 15px 30px rgba(0, 78, 146, 0.4);
         }
 
-        /* --- SERVICES (GLASSMORPHISM) --- */
         .services {
             background: var(--dark-bg);
             padding: 120px 2rem;
@@ -205,7 +202,6 @@
             line-height: 1.7;
         }
 
-        /* --- STATS --- */
         .stats {
             padding: 100px 2rem;
             background: white;
@@ -226,7 +222,6 @@
             font-family: 'Outfit';
         }
 
-        /* --- FOOTER --- */
         footer {
             background: #020617;
             padding: 80px 2rem 40px;
@@ -259,7 +254,6 @@
 
         .whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* Responsive */
         @media (max-width: 992px) {
             .stats-container { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; }
@@ -285,9 +279,9 @@
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <span class="hero-tag">Tecnología de Precisión</span>
-            <h1>Ingeniería Hidráulica <br> Potenciada por IA.</h1>
-            <p>Más de 25 años optimizando sistemas de bombeo para la industria energética, minera y petrolera en el corazón de Vaca Muerta.</p>
+            <span class="hero-tag">WPM</span>
+            <h1>Elevando el estándar <br> en soluciones de bombeo.</h1>
+            <p>Más de 25 años optimizando sistemas de bombeo para la industria hidraulica, minera y petrolera.</p>
             <div class="hero-btns">
                 <a href="#contacto" class="btn-primary">Solicitar Asesoría</a>
             </div>
@@ -297,20 +291,20 @@
     <section class="stats">
         <div class="stats-container">
             <div class="stat-item">
-                <h4>+25</h4>
-                <p>Años de Trayectoria</p>
+                <h4>+Asesoramiento personalizado</h4>
+                <p>Guía experta para la selección precisa de equipos y accesorios.</p>
             </div>
             <div class="stat-item">
-                <h4>500+</h4>
-                <p>Equipos Instalados</p>
+                <h4>Reparación y mantenimiento</h4>
+                <p>Servicio técnico calificado para asegurar la operatividad de sus bombas.</p>
             </div>
             <div class="stat-item">
-                <h4>24/7</h4>
-                <p>Soporte Técnico</p>
+                <h4>Asistencia postventa</h4>
+                <p>Soporte continuo para cualquier necesidad después de la adquisición.</p>
             </div>
             <div class="stat-item">
-                <h4>99%</h4>
-                <p>Eficiencia Operativa</p>
+                <h4>Alineación láser</h4>
+                <p>Diagnóstico de precisión con entrega de informe detallado.</p>
             </div>
         </div>
     </section>
@@ -321,26 +315,17 @@
         </div>
         <div class="services-grid">
             <div class="card">
-                <img src="bomba-industrial.jpg" alt="Bombeo">
-                <h3>Sistemas de Bombeo</h3>
-                <p>Diseño y montaje de estaciones de bombeo de alta capacidad con monitoreo en tiempo real.</p>
-            </div>
-            <div class="card">
                 <img src="tecnico-ia.jpg" alt="IA Industrial">
-                <h3>Automatización & IA</h3>
-                <p>Implementación de algoritmos predictivos para reducir el desgaste y prevenir fallas costosas.</p>
-            </div>
-            <div class="card">
-                <img src="alineacion-laser.jpg" alt="Láser">
-                <h3>Alineación Láser</h3>
-                <p>Mantenimiento preventivo de precisión milimétrica para prolongar la vida útil de su maquinaria.</p>
+                <h3></h3>
+                <p>Somos especialistas en la selección y provisión de bombas y sistemas de bombeo para las industrias del agua, minería y petróleo. Con más de 25 años de vasta experiencia en el rubro, nos destacamos por nuestra amplia gama de productos y un servicio de postventa superior.
+                 Nos distinguimos por ofrecer un servicio personalizado a cada uno de nuestros clientes, garantizando la solución más eficiente al menor costo posible. En WPM, su éxito es nuestra prioridad.</p>
             </div>
         </div>
     </section>
 
     <section id="contacto" style="padding: 100px 2rem; background: white; text-align: center;">
         <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-size: 3rem; margin-bottom: 2rem;">¿Listo para optimizar su planta?</h2>
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;">Servicios especializados y de valor agregado</h2>
             <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem;">Hablemos sobre cómo nuestras soluciones pueden reducir sus costos operativos en Neuquén y toda la región.</p>
             <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary" style="background: var(--dark-bg);">Enviar un Email</a>
         </div>
@@ -368,13 +353,11 @@
     </a>
 
     <script>
-        // Efecto scroll en el header
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Animaciones de entrada
         ScrollReveal().reveal('.hero-content', { delay: 300, distance: '50px', origin: 'left' });
         ScrollReveal().reveal('.card', { delay: 300, distance: '50px', interval: 150, origin: 'bottom' });
         ScrollReveal().reveal('.stat-item', { delay: 200, scale: 0.85, interval: 100 });
