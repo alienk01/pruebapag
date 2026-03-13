@@ -33,7 +33,7 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER OPTIMIZADO --- */
+        /* --- HEADER --- */
         header {
             position: fixed;
             top: 0;
@@ -85,7 +85,7 @@
 
         .nav-links a:hover { color: var(--primary-red); }
 
-        /* --- HERO CON VIDEO BACKGROUND --- */
+        /* --- HERO CORREGIDO --- */
         .hero {
             height: 100vh;
             width: 100%;
@@ -95,7 +95,6 @@
             overflow: hidden;
         }
 
-        /* Contenedor del video */
         .video-container {
             position: absolute;
             top: 0;
@@ -108,17 +107,16 @@
         .video-container video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Asegura que el video cubra todo el fondo */
         }
 
-        /* Overlay oscuro para legibilidad del texto */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.65); /* Ajusta este valor para más o menos brillo */
+            background: rgba(0, 0, 0, 0.6); /* Oscurece el video para legibilidad */
             z-index: 2;
         }
 
@@ -175,7 +173,7 @@
             box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
         }
 
-        /* --- STATS --- */
+        /* --- SECCIONES ADICIONALES --- */
         .stats {
             padding: 80px 2rem;
             background: var(--dark-gray);
@@ -198,7 +196,6 @@
             font-weight: 800;
         }
 
-        /* --- SERVICIOS --- */
         .services {
             padding: 100px 2rem;
             background: var(--deep-black);
@@ -240,7 +237,6 @@
 
         .card h3 { color: var(--primary-red); font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px; }
 
-        /* --- CONTACTO Y MAPA --- */
         .cta-section {
             padding: 100px 2rem;
             background: var(--dark-gray);
@@ -256,7 +252,6 @@
             overflow: hidden;
         }
 
-        /* --- FOOTER --- */
         footer {
             background: #000;
             padding: 80px 2rem 40px;
@@ -275,8 +270,6 @@
 
         .footer-item a { color: white; text-decoration: none; opacity: 0.8; transition: 0.3s; }
 
-        .footer-item a:hover { opacity: 1; color: var(--primary-red); }
-
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
@@ -292,8 +285,6 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
             transition: 0.3s;
         }
-
-        .whatsapp-btn:hover { transform: scale(1.1); }
 
         @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 3rem; } }
     </style>
@@ -316,7 +307,8 @@
     <section class="hero" id="inicio">
         <div class="video-container">
             <video autoplay muted loop playsinline poster="atardecer-industrial.jpg">
-                <source src="hero-video.mp4" type="video/mp4">
+                <source src="hero-video.mp4.mp4" type="video/mp4">
+                Su navegador no soporta el tag de video.
             </video>
         </div>
         <div class="hero-overlay"></div>
@@ -379,7 +371,7 @@
 
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.374567223707!2d-68.10620612450893!3d-38.938830871715454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33e387140f89%3A0xc023d85f83832127!2sTita%20Merello%203200%2C%20Neuqu%C3%A9n!5e0!3m2!1ses-419!2sar!4v1715000000000!5m2!1ses-419!2sar" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.123456789!2d-68.1234567!3d-38.9123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU0JzQ0LjQiUyA2OMKwMDcnMjQuNCJX!5e0!3m2!1ses!2sar!4v123456789" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
@@ -392,15 +384,13 @@
             </div>
             <div class="footer-item">
                 <h4>Ubicación</h4>
-                <a href="https://maps.app.goo.gl/msFvVEvJHnrgQ2Z4U" target="_blank">
+                <a href="#">
                     <p>Tita Merello 3200, Neuquén<br>Argentina</p>
-                    <small style="color: var(--primary-red);">(Abrir en Google Maps)</small>
                 </a>
             </div>
             <div class="footer-item">
                 <h4>Contáctanos</h4>
                 <p><a href="tel:02994403508">(0299) 440-3508</a></p>
-                <p><a href="tel:0299154676871">(0299) 15 467-6871</a></p>
                 <p><a href="mailto:ventas@wpmweb.com.ar">ventas@wpmweb.com.ar</a></p>
             </div>
             <div class="footer-item">
@@ -418,13 +408,11 @@
     </a>
 
     <script>
-        // Cambio de estilo del header al hacer scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Configuración de animaciones suaves
         ScrollReveal().reveal('.hero-content', { delay: 300, distance: '60px', origin: 'bottom', duration: 1000 });
         ScrollReveal().reveal('.stat-item', { delay: 200, interval: 150, origin: 'bottom', distance: '40px' });
         ScrollReveal().reveal('.card', { delay: 300, interval: 250, origin: 'bottom', distance: '50px' });
