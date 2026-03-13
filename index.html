@@ -61,10 +61,11 @@
         }
 
         .logo img {
-            height: 45px;
+            height: 60px; /* Tamaño optimizado para visibilidad */
             width: auto;
             display: block;
             transition: 0.3s ease;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -85,7 +86,7 @@
 
         .nav-links a:hover { color: var(--primary-red); }
 
-        /* --- HERO CON VIDEO FONDO --- */
+        /* --- HERO CON VIDEO --- */
         .hero {
             height: 100vh;
             width: 100%;
@@ -107,7 +108,7 @@
         .video-container video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Clave para que el video llene el fondo */
+            object-fit: cover;
         }
 
         .hero-overlay {
@@ -116,7 +117,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Oscurece el video para que el texto destaque */
+            background: rgba(0, 0, 0, 0.65);
             z-index: 2;
         }
 
@@ -129,30 +130,12 @@
             z-index: 3;
         }
 
-        .hero-tag {
-            border-left: 4px solid var(--primary-red);
-            padding-left: 15px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 1.5rem;
-            color: var(--primary-red);
-        }
-
         .hero h1 {
             font-family: 'Outfit', sans-serif;
             font-size: clamp(2.5rem, 8vw, 4.8rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            color: var(--muted-white);
         }
 
         .btn-primary {
@@ -163,7 +146,6 @@
             font-weight: 700;
             display: inline-block;
             text-transform: uppercase;
-            letter-spacing: 1px;
             transition: 0.4s;
         }
 
@@ -173,40 +155,10 @@
             box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
         }
 
-        /* --- SECCIONES --- */
-        .stats {
-            padding: 80px 2rem;
-            background: var(--dark-gray);
-            border-top: 2px solid var(--primary-red);
-        }
-
-        .stats-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .stat-item h4 {
-            font-size: 1.1rem;
-            color: var(--primary-red);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
+        /* --- SERVICIOS --- */
         .services {
             padding: 100px 2rem;
             background: var(--deep-black);
-        }
-
-        .section-title h2 {
-            font-family: 'Outfit';
-            font-size: 3rem;
-            margin-bottom: 60px;
-            border-bottom: 4px solid var(--primary-red);
-            display: inline-block;
         }
 
         .services-grid {
@@ -224,8 +176,6 @@
             transition: 0.4s ease;
         }
 
-        .card:hover { border-color: var(--primary-red); transform: translateY(-10px); }
-
         .card-img {
             width: 100%;
             height: 280px;
@@ -235,20 +185,12 @@
 
         .card-content { padding: 40px; }
 
-        .card h3 { color: var(--primary-red); font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px; }
-
-        .cta-section {
-            padding: 100px 2rem;
-            background: var(--dark-gray);
-            text-align: center;
-        }
-
+        /* --- MAPA Y FOOTER --- */
         .map-container {
             max-width: 1300px;
             margin: 50px auto 0;
             height: 450px;
             border: 2px solid var(--primary-red);
-            border-radius: 4px;
             overflow: hidden;
         }
 
@@ -265,11 +207,7 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
         }
-
-        .footer-item h4 { color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; }
-
-        .footer-item a { color: white; text-decoration: none; opacity: 0.8; transition: 0.3s; }
-
+        
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
@@ -283,10 +221,7 @@
             justify-content: center;
             z-index: 1000;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
         }
-
-        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 3rem; } }
     </style>
 </head>
 <body>
@@ -307,90 +242,74 @@
     <section class="hero" id="inicio">
         <div class="video-container">
             <video autoplay muted loop playsinline poster="atardecer-industrial.jpg">
-                <source src="hero-video.mp4.mp4" type="video/mp4">
+                <source src="hero-video.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
             </video>
         </div>
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
-            <div class="hero-tag">WPM SRL | Neuquén</div>
+            <div style="border-left: 4px solid var(--primary-red); padding-left: 15px; margin-bottom: 1.5rem; color: var(--primary-red); font-weight: 700; text-transform: uppercase; letter-spacing: 3px;">WPM SRL | Neuquén</div>
             <h1>Potencia y Precisión <br>en cada Bombeo.</h1>
-            <p>Más de 25 años liderando la provisión y mantenimiento de sistemas hidráulicos industriales en el corazón de la Patagonia.</p>
+            <p style="font-size: 1.2rem; max-width: 600px; margin-bottom: 2.5rem; color: var(--muted-white);">Más de 25 años liderando la provisión y mantenimiento de sistemas hidráulicos industriales.</p>
             <a href="#servicios" class="btn-primary">Nuestras Soluciones</a>
         </div>
     </section>
 
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h4>Asesoramiento</h4>
-                <p>Guía experta para la selección técnica de sus equipos según su necesidad industrial.</p>
-            </div>
-            <div class="stat-item">
-                <h4>Reparación</h4>
-                <p>Mantenimiento calificado para garantizar operatividad continua y vida útil.</p>
-            </div>
-            <div class="stat-item">
-                <h4>Alineación Láser</h4>
-                <p>Diagnóstico de precisión extrema con informes detallados de cada intervención.</p>
-            </div>
-            <div class="stat-item">
-                <h4>Postventa</h4>
-                <p>Soporte técnico y provisión de repuestos originales en toda la región.</p>
-            </div>
-        </div>
-    </section>
-
     <section class="services" id="servicios">
-        <div class="section-title" style="max-width: 1300px; margin: 0 auto;">
-            <h2>Nuestra Especialidad</h2>
+        <div style="max-width: 1300px; margin: 0 auto 60px;">
+            <h2 style="font-family: 'Outfit'; font-size: 3rem; border-bottom: 4px solid var(--primary-red); display: inline-block;">Nuestra Especialidad</h2>
         </div>
         <div class="services-grid">
             <div class="card">
                 <img src="bombas-petroleo.jpg" alt="Equipos" class="card-img">
                 <div class="card-content">
-                    <h3>Sistemas Hidráulicos</h3>
-                    <p>Expertos en bombas para agua, minería y petróleo. Ofrecemos soluciones eficientes que reducen costos operativos y maximizan la productividad.</p>
+                    <h3 style="color: var(--primary-red); font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px;">Sistemas Hidráulicos</h3>
+                    <p style="color: var(--muted-white);">Expertos en bombas para agua, minería y petróleo. Ofrecemos soluciones eficientes que reducen costos operativos.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="tecnico-mantenimiento.jpg" alt="Servicio" class="card-img">
                 <div class="card-content">
-                    <h3>Servicio Integral</h3>
-                    <p>Desde la instalación hasta el mantenimiento predictivo. Respuesta 24/7 para el sector energético en Neuquén y zonas aledañas.</p>
+                    <h3 style="color: var(--primary-red); font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px;">Servicio Integral</h3>
+                    <p style="color: var(--muted-white);">Desde la instalación hasta el mantenimiento preventivo. Respuesta 24/7 para el sector energético en Neuquén.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="contacto">
+    <section id="contacto" style="padding: 100px 2rem; background: var(--dark-gray); text-align: center;">
         <h2 style="font-size: 2.8rem; font-family: 'Outfit';">¿Necesita asistencia técnica hoy?</h2>
-        <p style="margin: 20px 0 40px; color: var(--muted-white); font-size: 1.1rem;">Optimice su producción con tecnología de vanguardia y respaldo experto inmediato.</p>
-        <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary">Contactar Ventas</a>
+        <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary" style="margin-top: 30px;">Contactar Ventas</a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.784532724225!2d-68.1068864!3d-38.95175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33cb8e66e773%3A0xb03b7e7c858582!2sTita%20Merello%203200%2C%20Neuquén!5e0!3m2!1ses!2sar!4v1710000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-item">
                 <img src="logo.png" alt="WPM" style="height: 45px; filter: brightness(1.5);">
-                <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.6;">Referente en soluciones de ingeniería hidráulica desde Neuquén para toda la Patagonia.</p>
+                <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.6;">Ingeniería hidráulica desde Neuquén para toda la Patagonia.</p>
             </div>
             <div class="footer-item">
-                <h4>Ubicación</h4>
-                <p>Tita Merello 3200, Neuquén<br>Argentina</p>
+                <h4 style="color: var(--primary-red); margin-bottom: 20px;">Ubicación</h4>
+                <a href="https://maps.app.goo.gl/kX875X5" target="_blank" style="text-decoration: none; color: white; opacity: 0.7;">
+                    <p>Tita Merello 3200, Neuquén<br>Argentina</p>
+                    <small style="color: var(--primary-red);">(Ver en Google Maps)</small>
+                </a>
             </div>
             <div class="footer-item">
-                <h4>Contáctanos</h4>
-                <p><a href="tel:02994403508">(0299) 440-3508</a></p>
-                <p><a href="mailto:ventas@wpmweb.com.ar">ventas@wpmweb.com.ar</a></p>
+                <h4 style="color: var(--primary-red); margin-bottom: 20px;">Contáctanos</h4>
+                <div style="opacity: 0.7; font-size: 0.95rem;">
+                    <p><a href="tel:02994403508" style="color: white; text-decoration: none;">(0299) 440-3508</a></p>
+                    <p><a href="tel:0299154676871" style="color: white; text-decoration: none;">(0299) 15 467-6871</a></p>
+                    <p><a href="mailto:ventas@wpmweb.com.ar" style="color: white; text-decoration: none;">ventas@wpmweb.com.ar</a></p>
+                </div>
             </div>
             <div class="footer-item">
-                <h4>Horario</h4>
-                <p>Lunes a viernes:<br>08:30 a 17:30 hs.</p>
+                <h4 style="color: var(--primary-red); margin-bottom: 20px;">Horario de Atención</h4>
+                <p style="opacity: 0.8;">Lunes a viernes:<br>08:30 a 17:30 hs.</p>
             </div>
-        </div>
-        <div style="text-align: center; margin-top: 60px; opacity: 0.3; font-size: 0.8rem;">
-            © 2026 WPM SRL. Todos los derechos reservados.
         </div>
     </footer>
 
@@ -403,10 +322,7 @@
             const header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
-
-        ScrollReveal().reveal('.hero-content', { delay: 300, distance: '60px', origin: 'bottom', duration: 1000 });
-        ScrollReveal().reveal('.stat-item', { delay: 200, interval: 150, origin: 'bottom', distance: '40px' });
-        ScrollReveal().reveal('.card', { delay: 300, interval: 250, origin: 'bottom', distance: '50px' });
+        ScrollReveal().reveal('.hero-content', { delay: 300, distance: '60px', origin: 'bottom' });
     </script>
 </body>
 </html>
