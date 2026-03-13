@@ -33,26 +33,26 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER --- */
+        /* --- NUEVO HEADER (Estético y Posicionado) --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 0;
+            padding: 1rem 0;
             z-index: 1000;
             transition: 0.4s ease-in-out;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            background: rgba(0,0,0,0.3); /* Transparente al inicio */
         }
 
         header.scrolled {
-            background: rgba(11, 11, 11, 0.98);
+            background: rgba(11, 11, 11, 0.95);
             backdrop-filter: blur(10px);
-            padding: 0.8rem 0;
+            padding: 0.7rem 0;
             border-bottom: 1px solid var(--border-red);
         }
 
         nav {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -60,12 +60,21 @@
             padding: 0 2rem;
         }
 
+        /* Posicionamiento perfecto del logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
         .logo img {
-            height: 60px; /* Tamaño optimizado para visibilidad */
+            height: 40px; /* Tamaño estético del logo */
             width: auto;
-            display: block;
-            transition: 0.3s ease;
-            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        header.scrolled .logo img {
+            height: 35px; /* Se achica un poco al hacer scroll */
         }
 
         .nav-links {
@@ -82,21 +91,36 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: 0.3s;
+            position: relative;
+        }
+
+        /* Sin subrayado estático, solo hover moderno */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: width 0.3s;
         }
 
         .nav-links a:hover { color: var(--primary-red); }
+        .nav-links a:hover::after { width: 100%; }
 
-        /* --- HERO CON VIDEO --- */
+        /* --- HERO SECTION CON SLIDESHOW (Imágenes Pasantes) --- */
         .hero {
             height: 100vh;
-            width: 100%;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 0 2rem;
         }
 
-        .video-container {
+        /* Contenedor del Slideshow */
+        .hero-slideshow {
             position: absolute;
             top: 0;
             left: 0;
@@ -105,34 +129,56 @@
             z-index: 1;
         }
 
-        .video-container video {
+        /* Imágenes del Slideshow */
+        .hero-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Transición suave de fade */
         }
 
+        /* Imagen activa */
+        .hero-slideshow img.active {
+            opacity: 1;
+        }
+
+        /* Overlay oscuro para legibilidad */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.65);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85));
             z-index: 2;
         }
 
         .hero-content {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            padding: 0 2rem;
             position: relative;
-            z-index: 3;
+            z-index: 3; /* Sobre el Slideshow y Overlay */
+        }
+
+        .hero-tag {
+            border-left: 4px solid var(--primary-red);
+            padding-left: 15px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
         }
 
         .hero h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.8rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -141,31 +187,63 @@
         .btn-primary {
             background: var(--primary-red);
             color: var(--pure-white);
-            padding: 18px 40px;
+            padding: 16px 35px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
             text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.4s;
         }
 
         .btn-primary:hover {
             background: #cc0000;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
         }
 
-        /* --- SERVICIOS --- */
+        /* --- STATS --- */
+        .stats {
+            padding: 80px 2rem;
+            background: var(--dark-gray);
+            border-top: 2px solid var(--primary-red);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item h4 {
+            font-size: 1.1rem;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* --- SERVICIOS (Ajustados con tus imágenes) --- */
         .services {
             padding: 100px 2rem;
             background: var(--deep-black);
         }
 
+        .section-title h2 {
+            font-family: 'Outfit';
+            font-size: 3rem;
+            margin-bottom: 60px;
+            border-bottom: 4px solid var(--primary-red);
+            display: inline-block;
+        }
+
         .services-grid {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
 
@@ -173,27 +251,39 @@
             background: var(--dark-gray);
             border: 1px solid #333;
             overflow: hidden;
-            transition: 0.4s ease;
+            transition: 0.4s;
         }
+
+        .card:hover { border-color: var(--primary-red); transform: translateY(-10px); }
 
         .card-img {
             width: 100%;
-            height: 280px;
+            height: 250px;
             object-fit: cover;
             border-bottom: 3px solid var(--primary-red);
         }
 
-        .card-content { padding: 40px; }
+        .card-content { padding: 30px; }
 
-        /* --- MAPA Y FOOTER --- */
+        .card h3 { color: var(--primary-red); font-family: 'Outfit'; margin-bottom: 15px; }
+
+        /* --- CONTACTO Y MAPA --- */
+        .cta-section {
+            padding: 100px 2rem;
+            background: var(--dark-gray);
+            text-align: center;
+        }
+
         .map-container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 50px auto 0;
             height: 450px;
             border: 2px solid var(--primary-red);
+            border-radius: 4px;
             overflow: hidden;
         }
 
+        /* --- FOOTER --- */
         footer {
             background: #000;
             padding: 80px 2rem 40px;
@@ -201,36 +291,41 @@
         }
 
         .footer-grid {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
         }
-        
+
+        .footer-item h4 { color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; }
+
+        .footer-item a { color: white; text-decoration: none; opacity: 0.8; transition: 0.3s; }
+
+        .footer-item a:hover { opacity: 1; color: var(--primary-red); }
+
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #25d366;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
         }
+
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
     <header id="header">
         <nav>
-            <a href="#" class="logo">
-                <img src="logo.png" alt="WPM SRL">
-            </a>
+            <a href="#" class="logo"><img src="logo.png" alt="WPM SRL"></a>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -240,89 +335,132 @@
     </header>
 
     <section class="hero" id="inicio">
-        <div class="video-container">
-            <video autoplay muted loop playsinline poster="atardecer-industrial.jpg">
-                <source src="hero-video.mp4" type="video/mp4">
-                Tu navegador no soporta videos.
-            </video>
+        <div class="hero-slideshow">
+            <img src="fondo.jpg" class="active" alt="Fondo WPM 1">
+            <img src="atardecer-industrial.jpg" alt="Fondo WPM 2">
         </div>
         <div class="hero-overlay"></div>
+        
         <div class="hero-content">
-            <div style="border-left: 4px solid var(--primary-red); padding-left: 15px; margin-bottom: 1.5rem; color: var(--primary-red); font-weight: 700; text-transform: uppercase; letter-spacing: 3px;">WPM SRL | Neuquén</div>
+            <div class="hero-tag">WPM SRL | Neuquén</div>
             <h1>Potencia y Precisión <br>en cada Bombeo.</h1>
-            <p style="font-size: 1.2rem; max-width: 600px; margin-bottom: 2.5rem; color: var(--muted-white);">Más de 25 años liderando la provisión y mantenimiento de sistemas hidráulicos industriales.</p>
+            <p>Más de 25 años liderando la provisión y mantenimiento de sistemas hidráulicos industriales.</p>
             <a href="#servicios" class="btn-primary">Nuestras Soluciones</a>
         </div>
     </section>
 
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h4>Asesoramiento</h4>
+                <p>Guía experta para la selección técnica de sus equipos.</p>
+            </div>
+            <div class="stat-item">
+                <h4>Reparación</h4>
+                <p>Mantenimiento calificado para garantizar operatividad continua.</p>
+            </div>
+            <div class="stat-item">
+                <h4>Alineación Láser</h4>
+                <p>Diagnóstico de precisión extrema con informes detallados.</p>
+            </div>
+            <div class="stat-item">
+                <h4>Postventa</h4>
+                <p>Soporte técnico y provisión de repuestos en toda la región.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="services" id="servicios">
-        <div style="max-width: 1300px; margin: 0 auto 60px;">
-            <h2 style="font-family: 'Outfit'; font-size: 3rem; border-bottom: 4px solid var(--primary-red); display: inline-block;">Nuestra Especialidad</h2>
+        <div class="section-title" style="max-width: 1200px; margin: 0 auto;">
+            <h2>Nuestra Especialidad</h2>
         </div>
         <div class="services-grid">
             <div class="card">
                 <img src="bombas-petroleo.jpg" alt="Equipos" class="card-img">
                 <div class="card-content">
-                    <h3 style="color: var(--primary-red); font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px;">Sistemas Hidráulicos</h3>
-                    <p style="color: var(--muted-white);">Expertos en bombas para agua, minería y petróleo. Ofrecemos soluciones eficientes que reducen costos operativos.</p>
+                    <h3>Sistemas Hidráulicos</h3>
+                    <p>Expertos en bombas para agua, minería y petróleo. Optimizamos su productividad con el menor costo operativo.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="tecnico-mantenimiento.jpg" alt="Servicio" class="card-img">
                 <div class="card-content">
-                    <h3 style="color: var(--primary-red); font-family: 'Outfit'; font-size: 1.6rem; margin-bottom: 15px;">Servicio Integral</h3>
-                    <p style="color: var(--muted-white);">Desde la instalación hasta el mantenimiento preventivo. Respuesta 24/7 para el sector energético en Neuquén.</p>
+                    <h3>Servicio Integral</h3>
+                    <p>Desde instalación hasta mantenimiento predictivo. Respuesta 24/7 para el sector energético en Neuquén.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" style="padding: 100px 2rem; background: var(--dark-gray); text-align: center;">
-        <h2 style="font-size: 2.8rem; font-family: 'Outfit';">¿Necesita asistencia técnica hoy?</h2>
-        <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary" style="margin-top: 30px;">Contactar Ventas</a>
+    <section class="cta-section" id="contacto">
+        <h2 style="font-size: 2.5rem; font-family: 'Outfit';">¿Necesita asistencia técnica hoy?</h2>
+        <p style="margin: 20px 0 40px; color: var(--muted-white);">Soluciones de vanguardia y respaldo experto inmediato.</p>
+        <a href="mailto:ventas@wpmweb.com.ar" class="btn-primary">Enviar Email</a>
+
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.784532724225!2d-68.1068864!3d-38.95175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33cb8e66e773%3A0xb03b7e7c858582!2sTita%20Merello%203200%2C%20Neuquén!5e0!3m2!1ses!2sar!4v1710000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe 
+                src="http://googleusercontent.com/maps.google.com/6" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-item">
-                <img src="logo.png" alt="WPM" style="height: 45px; filter: brightness(1.5);">
-                <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.6;">Ingeniería hidráulica desde Neuquén para toda la Patagonia.</p>
+                <img src="logo.png" alt="WPM" style="height: 40px; filter: brightness(1.5);">
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.6;">Referente en soluciones de ingeniería hidráulica desde Neuquén.</p>
             </div>
             <div class="footer-item">
-                <h4 style="color: var(--primary-red); margin-bottom: 20px;">Ubicación</h4>
-                <a href="https://maps.app.goo.gl/kX875X5" target="_blank" style="text-decoration: none; color: white; opacity: 0.7;">
+                <h4>Ubicación</h4>
+                <a href="http://googleusercontent.com/maps.google.com/7" target="_blank">
                     <p>Tita Merello 3200, Neuquén<br>Argentina</p>
                     <small style="color: var(--primary-red);">(Ver en Google Maps)</small>
                 </a>
             </div>
             <div class="footer-item">
-                <h4 style="color: var(--primary-red); margin-bottom: 20px;">Contáctanos</h4>
-                <div style="opacity: 0.7; font-size: 0.95rem;">
-                    <p><a href="tel:02994403508" style="color: white; text-decoration: none;">(0299) 440-3508</a></p>
-                    <p><a href="tel:0299154676871" style="color: white; text-decoration: none;">(0299) 15 467-6871</a></p>
-                    <p><a href="mailto:ventas@wpmweb.com.ar" style="color: white; text-decoration: none;">ventas@wpmweb.com.ar</a></p>
-                </div>
+                <h4>Contáctanos</h4>
+                <p><a href="tel:02994403508">(0299) 440-3508</a></p>
+                <p><a href="tel:0299154676871">(0299) 15 467-6871</a></p>
+                <p><a href="mailto:ventas@wpmweb.com.ar">ventas@wpmweb.com.ar</a></p>
             </div>
             <div class="footer-item">
-                <h4 style="color: var(--primary-red); margin-bottom: 20px;">Horario de Atención</h4>
+                <h4>Horario de Atención</h4>
                 <p style="opacity: 0.8;">Lunes a viernes:<br>08:30 a 17:30 hs.</p>
             </div>
+        </div>
+        <div style="text-align: center; margin-top: 60px; opacity: 0.3; font-size: 0.8rem;">
+            © 2026 WPM SRL. Todos los derechos reservados.
         </div>
     </footer>
 
     <a href="https://wa.me/5492994676871" class="whatsapp-btn">
-        <svg width="35" height="35" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-4.741 1.242 1.26-4.623-.235-.374a9.845 9.845 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-4.741 1.242 1.26-4.623-.235-.374a9.845 9.845 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
     <script>
+        // Efecto scroll en header
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
-        ScrollReveal().reveal('.hero-content', { delay: 300, distance: '60px', origin: 'bottom' });
+
+        // --- SCRIPT DEL SLIDESHOW HERO ---
+        const slides = document.querySelectorAll('.hero-slideshow img');
+        const slideInterval = 5000; // 5 segundos por imagen
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, slideInterval);
+        // ---------------------------------
+
+        ScrollReveal().reveal('.hero-content', { delay: 200, distance: '50px', origin: 'bottom' });
+        ScrollReveal().reveal('.stat-item', { delay: 300, interval: 100, origin: 'bottom' });
+        ScrollReveal().reveal('.card', { delay: 200, interval: 200, origin: 'bottom' });
     </script>
 </body>
 </html>
